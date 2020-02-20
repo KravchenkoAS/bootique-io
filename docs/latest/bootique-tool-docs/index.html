@@ -1,0 +1,418 @@
+<!doctype html>
+<html class="no-js" lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>Bootique: Minimally Opinionated Framework for Runnable Java</title>
+  <meta name="description" content="Bootique CLI tool &#39;bq&#39; Documentation">
+<meta name="keywords" content="bootique, bq, cli">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/images/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#333333">
+  <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#333333">
+  <link rel="canonical" href="https://bootique.io/docs/latest/bootique-tool-docs/">
+  <link href="/assets/app.css?345c11541b072cd4f011" rel="stylesheet">
+<script type="text/javascript" src="/assets/app.js?345c11541b072cd4f011"></script>
+
+</head>
+
+<body data-spy="scroll" data-target="#docs-nav">
+
+<!--[if lt IE 10]>
+<p class="browsehappy">
+  You are using an <strong>outdated</strong> browser.
+  Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.
+</p>
+<![endif]-->
+
+<div id="top-nav" class="main">
+  
+  <a href="#menu" id="menuToggle" aria-label="Menu" class="menu-toggle">
+      <span></span>
+  </a>
+  <div id="menu" class="nav-menu pure-menu pure-menu-horizontal">
+    <a href="https://bootique.io/" class="nav-brand center"><img src="/images/logo.svg" alt="Bootique" /></a>
+    <div class="container nav">
+      <div class="valign-wrapper-sm">
+        <div class="valign-sm">
+          <ul class="pure-menu-list pull-left">
+  
+  
+  <li class="pure-menu-item ">
+    <a class="pure-menu-link" href="/docs/1.x/getting-started/">Get started</a>
+  </li>
+  
+  <li class="pure-menu-item ">
+    <a class="pure-menu-link" href="/docs/1.x/">Documentation</a>
+  </li>
+  
+  <li class="pure-menu-item ">
+    <a class="pure-menu-link" href="/cla/">CLA</a>
+  </li>
+  
+  <li class="pure-menu-item ">
+    <a class="pure-menu-link" href="https://groups.google.com/forum/#!forum/bootique-user">Forum</a>
+  </li>
+  
+</ul>
+
+        </div>
+      </div>
+      <ul id="nav-social" class="pure-menu-list pull-right">
+        <li class="pure-menu-item gh-btns" data-gh-owner="bootique" data-gh-repo="bootique">
+          <a href="https://github.com/bootique/bootique" class="pure-menu-link github-btn fork">
+            <i class="fab fa-github"></i><span>Github</span>
+          </a>
+          <a href="https://github.com/bootique/bootique/stargazers" class="pure-menu-link github-btn star">
+            <img class="gh-stars" src="/images/icon_octocat_stars.svg" alt="GitHub Stars" />
+            <span class="star-counter">1274</span>
+          </a>
+        </li>
+        <li class="pure-menu-item tw-btn">
+          <a href="https://twitter.com/intent/follow?screen_name=BootiqueProject" class="pure-menu-link tw-btn">
+            <i class="fab fa-twitter"></i><span>Follow</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="documentation-page container content docbook">
+  <h1>
+    Bq tool documentation
+  </h1>
+  <div class="dropdown doc-version">
+  <a class="dropdown-toggle" href="#" id="dropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="-24,4">
+      Version 2.0
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          
+              <a class="dropdown-item active" href="/docs/latest/bootique-tool-docs/">Version 2.0 (alpha)</a>
+          
+          </div>
+</div>
+
+
+
+  <hr/>
+
+  <div class="container">
+    <div class="row ">
+      <div id="docs-nav" class="col-12 col-lg-4 col-xl-3 nav  docs-nav"><div id="toc" class="toc"> 
+ <div id="toctitle">
+  Table of Contents
+ </div> 
+ <ul class="sectlevel1 nav"> 
+  <li><a href="#_what_is_bq" class="nav-link">1. What is bq?</a></li> 
+  <li><a href="#_installation" class="nav-link">2. Installation</a> 
+   <ul class="sectlevel2 nav"> 
+    <li><a href="#_mac" class="nav-link">2.1. Mac</a></li> 
+    <li><a href="#_linux" class="nav-link">2.2. Linux</a></li> 
+    <li><a href="#_windows" class="nav-link">2.3. Windows</a></li> 
+   </ul> </li> 
+  <li><a href="#_how_to_use" class="nav-link">3. How to use</a> 
+   <ul class="sectlevel2 nav"> 
+    <li><a href="#_maven" class="nav-link">3.1. Maven</a></li> 
+    <li><a href="#_gradle" class="nav-link">3.2. Gradle</a></li> 
+   </ul> </li> 
+ </ul> 
+</div></div>
+
+      <div class="col-12 col-lg-8 col-xl-9  py-3 pl-lg-5">
+        <article>
+          
+
+
+
+
+
+<div class="sect1"> 
+ <h2 id="_what_is_bq">1. What is bq?</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>bq is an interactive tool to create and manage Bootique projects.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_installation">2. Installation</h2> 
+ <div class="sectionbody"> 
+  <div class="sect2"> 
+   <h3 id="_mac">2.1. Mac</h3> 
+   <div class="paragraph"> 
+    <p>All you need to install bq on Mac is to run:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">brew install bootique-tools/repo/bq</code></pre> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="_linux">2.2. Linux</h3> 
+   <div class="sect3"> 
+    <h4 id="_centos">2.2.1. CentOS</h4> 
+    <div class="paragraph"> 
+     <p>To install bq on CentOS you need to add bintray repo to your yum sources:</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">wget https://bintray.com/bootique/bq-rpm/rpm -O bintray-bootique-bq-rpm.repo
+sudo mv bintray-bootique-bq-rpm.repo /etc/yum.repos.d/</code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>And then run:</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">yum install bq</code></pre> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="sect3"> 
+    <h4 id="_ubuntu">2.2.2. Ubuntu</h4> 
+    <div class="paragraph"> 
+     <p>Installation algorithm is similar to installation on CentOS. Add bintray repo to apt sources:</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">echo "deb [trusted=yes] https://dl.bintray.com/bootique/bq-deb vivid main" | sudo tee -a /etc/apt/sources.list</code></pre> 
+     </div> 
+    </div> 
+    <div class="paragraph"> 
+     <p>And then install:</p> 
+    </div> 
+    <div class="listingblock"> 
+     <div class="content"> 
+      <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">apt-get update
+apt-get install bq</code></pre> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="_windows">2.3. Windows</h3> 
+   <div class="paragraph"> 
+    <p>Chocolatey is require to be installed on your PC. Then run:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">choco install bq</code></pre> 
+    </div> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_how_to_use">3. How to use</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Bq tool generates Bootique project or module.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Run bq:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">bq</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>After it user is getting to bq command line.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Command to show help:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">help</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Command to exit:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">exit</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>User can create configuration. This configuration will be saved and can be reused in next sessions.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Command to show configs:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">config</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Set group-id:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">config group-id io.bootique.test</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Set Bootique version to use:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">config bq-version 1.0</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Set default toolchain to use. Can be either Maven or Gradle:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">config toolchain maven</code></pre> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="_maven">3.1. Maven</h3> 
+   <div class="paragraph"> 
+    <p>To create new Maven project:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">new maven app io.bootique.test:bq-test:1.0</code></pre> 
+    </div> 
+   </div> 
+   <div class="paragraph"> 
+    <p>or in a short way:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">new m a io.bootique.test:bq-test:1.0</code></pre> 
+    </div> 
+   </div> 
+   <div class="paragraph"> 
+    <p>To create Maven module:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">new maven module io.bootique.test:bq-test:1.0</code></pre> 
+    </div> 
+   </div> 
+   <div class="paragraph"> 
+    <p>or in a short way:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">new m m io.bootique.test:bq-test:1.0</code></pre> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="_gradle">3.2. Gradle</h3> 
+   <div class="paragraph"> 
+    <p>To create new Gradle project:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">new gradle app io.bootique.test:bq-test:1.0</code></pre> 
+    </div> 
+   </div> 
+   <div class="paragraph"> 
+    <p>or in a short way:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">new g a io.bootique.test:bq-test:1.0</code></pre> 
+    </div> 
+   </div> 
+   <div class="paragraph"> 
+    <p>To create Gradle module:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">new gradle module io.bootique.test:bq-test:1.0</code></pre> 
+    </div> 
+   </div> 
+   <div class="paragraph"> 
+    <p>or in a short way:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlight"><code class="language-shell script shell script" data-lang="shell script">new g m io.bootique.test:bq-test:1.0</code></pre> 
+    </div> 
+   </div> 
+  </div> 
+ </div> 
+</div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+    <div id="footer-copy" class="container  d-flex flex-column align-items-center flex-lg-row flex-wrap justify-content-between  py-5 py-md-7">
+    <ul class="list-inline nav-double  order-lg-3  mb-0">
+        <li class="list-inline-item  mr-3 mr-lg-5">
+            <a href="/docs/" class="text-uppercase">Documentation</a>
+        </li>
+        <li class="list-inline-item  mr-3 mr-lg-5">
+            <a href="https://blog.bootique.io/" class="text-uppercase">Blog</a>
+        </li>
+        <li class="list-inline-item"><a href="/cla/" class="text-uppercase">CLA</a></li>
+    </ul>
+    <ul class="list-inline social-icons  order-lg-2  my-3 my-md-4 my-lg-0">
+        <li class="list-inline-item  mr-4_5">
+            <a href="https://github.com/bootique/bootique">
+                <i class="fab fa-github"></i>
+            </a>
+        </li>
+        <li class="list-inline-item  mr-4_5">
+            <a href="https://twitter.com/BootiqueProject">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+        <li class="list-inline-item">
+            <a href="https://blog.bootique.io/">
+                <i class="fab fa-medium-m"></i>
+            </a>
+        </li>
+    </ul>
+    <p class="order-lg-1  mb-0">&copy; <span class="current-year">2020</span> ObjectStyle LLC and individual authors</p>
+</div>
+
+</footer>
+
+
+<script>
+  (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+  function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+  e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+  e.src='https://www.google-analytics.com/analytics.js';
+  r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+  ga('create','UA-74603008-1');ga('send','pageview');
+</script>
+
+
+
+<script>
+!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+
+twq('init','nwf2s');
+twq('track','PageView');
+</script>
+
+
+</body>
+</html>
+
